@@ -40,18 +40,17 @@ def install_flows(edges, ip, port, user, passwd):
 				"/controller/nb/v2/flowprogrammer/default/node/OF/" + \
 				str(tail["node"]["id"]) + "/staticFlow/normal_" + tail["id"]
 		flow = { 
-            "installInHw":"true",
-            "name":"normal_" + tail["id"],
+			"installInHw":"true",
+			"name":"normal_" + tail["id"],
             "node": {
-                    "id":str(tail["node"]["id"]),
-                    "type":"OF"
+					"id":str(tail["node"]["id"]),
+            		"type":"OF"
                     }, 
 			"ingressPort":str(tail["id"]), 
-            "etherType":"0x0800",
+ 			"etherType":"0x0800",
 			"priority":"100",
-            "actions":["HW_PATH"]
+       		"actions":["HW_PATH"]
         }
-   		print tail["node"]["id"]
 		resp, content = http_context.request(url, "PUT", body=str(json.dumps(flow)),\
                            		  headers={"Content-Type":"application/json"})
 	
@@ -70,7 +69,6 @@ def install_flows(edges, ip, port, user, passwd):
 			"priority":"100",
 			"actions":["HW_PATH"]
 		}
-		print head["node"]["id"]
 		resp, content = http_context.request(url, "PUT", body=str(json.dumps(flow)),\
 											headers={"Content-Type":"application/json"})
 if __name__ == "__main__":
