@@ -42,7 +42,7 @@ def install_flows(edges, ip, port, user, passwd):
 		flow = { 
 			"installInHw":"true",
 			"name":"normal_" + tail["id"],
-            "node": {
+       		"node": {
 					"id":str(tail["node"]["id"]),
             		"type":"OF"
                     }, 
