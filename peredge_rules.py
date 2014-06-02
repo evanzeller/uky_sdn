@@ -42,15 +42,15 @@ def install_flows(edges, ip, port, user, passwd):
 		flow = { 
 			"installInHw":"true",
 			"name":"normal_" + tail["id"],
-       		"node": {
+			"node": {
 					"id":str(tail["node"]["id"]),
-            		"type":"OF"
+					"type":"OF"
                     }, 
 			"ingressPort":str(tail["id"]), 
  			"etherType":"0x0800",
 			"priority":"100",
        		"actions":["HW_PATH"]
-        }
+		}
 		resp, content = http_context.request(url, "PUT", body=str(json.dumps(flow)),\
                            		  headers={"Content-Type":"application/json"})
 	
